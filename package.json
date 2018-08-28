@@ -3,24 +3,55 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-typescript": "^7.0.0",
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react-native": "^3.4.10",
     "@types/jest": "^23.3.1",
-    "@types/react": "^16.4.12",
-    "@types/react-native": "^0.56.14",
+    "@types/react": "^16.4.13",
+    "@types/react-native": "^0.56.15",
     "@types/react-test-renderer": "^16.0.2",
+    "@types/storybook__react-native": "^3.0.2",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-preset-react-native": "^4.0.0",
+    "react-dom": "16.4.1",
     "react-native-scripts-ts": "1.15.0",
     "react-native-typescript-transformer": "^1.2.10",
     "react-test-renderer": "16.4.2",
     "ts-jest": "^23.1.4",
     "tslib": "^1.9.3",
-    "typescript": "^3.0.1"
+    "typescript": "^3.0.3"
   },
   "main": "./node_modules/react-native-scripts-ts/build/bin/crna-entry.js",
   "scripts": {
+    "storybook": "storybook start",
+    "dev": "concurrently --kill-others 'yarn start' 'yarn run ios'",
     "start": "react-native-scripts-ts start",
     "eject": "react-native-scripts-ts eject",
     "android": "react-native-scripts-ts android",
     "ios": "react-native-scripts-ts ios",
     "test": "jest"
+  },
+  "betterScripts": {
+    "build:dist": "webpack --config $npm_package_webpack --progress --colors",
+    "build:prod": {
+      "command": "webpack --config $npm_package_webpack --progress --colors",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "test": {
+      "command": "karma start",
+      "env": {
+        "NODE_ENV": "test"
+      }
+    }
   },
   "jest": {
     "globals": {
@@ -46,6 +77,8 @@
     }
   },
   "dependencies": {
+    "better-npm-run": "^0.1.1",
+    "concurrently": "^4.0.1",
     "react": "16.4.2",
     "react-native": "0.56.0"
   }
