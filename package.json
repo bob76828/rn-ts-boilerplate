@@ -21,21 +21,20 @@
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-preset-react-native": "^4.0.0",
     "react-dom": "16.4.1",
-    "react-native-scripts-ts": "1.15.0",
-    "react-native-typescript-transformer": "^1.2.10",
+    "react-native-scripts": "^1.14.0",
     "react-test-renderer": "16.4.2",
     "ts-jest": "^23.1.4",
     "tslib": "^1.9.3",
     "typescript": "^3.0.3"
   },
-  "main": "./node_modules/react-native-scripts-ts/build/bin/crna-entry.js",
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "storybook": "storybook start",
     "dev": "concurrently --kill-others 'yarn start' 'yarn run ios'",
-    "start": "react-native-scripts-ts start",
-    "eject": "react-native-scripts-ts eject",
-    "android": "react-native-scripts-ts android",
-    "ios": "react-native-scripts-ts ios",
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
     "test": "jest"
   },
   "betterScripts": {
@@ -54,27 +53,7 @@
     }
   },
   "jest": {
-    "globals": {
-      "ts-jest": {
-        "useBabelrc": true
-      }
-    },
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "preset": "jest-expo",
-    "testMatch": [
-      "**/__tests__/**/*.[tj]s?(x)",
-      "**/?(*.)(spec|test).[tj]s?(x)"
-    ],
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    }
+    "preset": "jest-expo"
   },
   "dependencies": {
     "better-npm-run": "^0.1.1",
