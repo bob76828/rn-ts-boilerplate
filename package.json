@@ -7,10 +7,10 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@storybook/addon-actions": "^3.4.10",
-    "@storybook/addon-links": "^3.4.10",
-    "@storybook/addons": "^3.4.10",
-    "@storybook/react-native": "^3.4.10",
+    "@storybook/addon-actions": "^4.0.0-alpha.20",
+    "@storybook/addon-links": "^4.0.0-alpha.20",
+    "@storybook/addons": "^4.0.0-alpha.20",
+    "@storybook/react-native": "^4.0.0-alpha.20",
     "@types/jest": "^23.3.1",
     "@types/react": "^16.4.13",
     "@types/react-native": "^0.56.15",
@@ -18,9 +18,10 @@
     "@types/storybook__react-native": "^3.0.2",
     "better-npm-run": "^0.1.1",
     "concurrently": "^4.0.1",
+    "jest": "^23.5.0",
+    "jest-react-native": "^18.0.0",
     "metro-react-native-babel-preset": "^0.45.0",
-    "react": "16.4.2",
-    "react-native": "0.57.0-rc.3",
+    "react-dom": "^16.4.2",
     "react-native-scripts": "^1.14.0",
     "react-test-renderer": "16.4.2",
     "ts-jest": "^23.1.4",
@@ -29,31 +30,35 @@
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "storybook": "storybook start",
-    "dev": "concurrently --kill-others 'yarn start' 'yarn run ios'",
-    "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
-    "test": "jest"
+    "prestorybook": "react-native link react-native-config",
+    "storybook": "better-npm-run storybook",
+    "predev": "react-native link react-native-config",
+    "dev": "better-npm-run dev"
   },
   "betterScripts": {
-    "build:dist": "webpack --config $npm_package_webpack --progress --colors",
-    "build:prod": {
-      "command": "webpack --config $npm_package_webpack --progress --colors",
+    "storybook": {
+      "command": "concurrently --kill-others-on-fail -n 'Storybook,RN' -c 'cyan.bold,green.bold' 'storybook start -p 7777' 'better-npm-run storybook:ios'"
+    },
+    "storybook:ios": {
+      "command": "react-native run-ios",
       "env": {
-        "NODE_ENV": "production"
+        "ENVFILE": "env/.storybook"
       }
     },
-    "test": {
-      "command": "karma start",
+    "dev": {
+      "command": "react-native run-ios",
       "env": {
-        "NODE_ENV": "test"
+        "ENVFILE": "env/.development"
       }
     }
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "react-native"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "16.4.2",
+    "react-native": "0.57.0-rc.3",
+    "react-native-config": "^0.11.5"
+  }
 }

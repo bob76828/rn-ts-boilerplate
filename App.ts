@@ -1,3 +1,7 @@
-import App from './src';
+import Config from 'react-native-config'
+import StorybookUI from './storybook';
+import App from './src/app';
 
-export default App;
+const { STORYBOOK } = Config;
+
+export default STORYBOOK === 'true' ? StorybookUI : App;
