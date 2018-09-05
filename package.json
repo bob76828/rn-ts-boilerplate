@@ -26,6 +26,7 @@
     "react-test-renderer": "16.4.2",
     "ts-jest": "^23.1.4",
     "tslib": "^1.9.3",
+    "tslint": "^5.11.0",
     "typescript": "^3.0.3"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -34,7 +35,8 @@
     "prestorybook": "react-native link react-native-config",
     "storybook": "better-npm-run storybook",
     "predev": "react-native link react-native-config",
-    "dev": "better-npm-run dev"
+    "dev": "better-npm-run dev",
+    "type-check": "tsc --noEmit"
   },
   "betterScripts": {
     "storybook": {

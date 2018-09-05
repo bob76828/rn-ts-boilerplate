@@ -1,7 +1,5 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react-native';
-
-
+import React from 'react';
 import App from './../';
 
 storiesOf('Boilerplate', module)
